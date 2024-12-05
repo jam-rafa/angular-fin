@@ -1,0 +1,74 @@
+<div class="w-100 p-5">
+  <!-- <form [formGroup]="dateForm">
+    <mat-form-field>
+      <mat-label>First campaign</mat-label>
+      <mat-date-range-input
+      >
+        <input matStartDate placeholder="Start date" formControlName="startDate" />
+        <input matEndDate placeholder="End date" formControlName="startDate" />
+      </mat-date-range-input>
+      <mat-datepicker-toggle
+        matIconSuffix
+      ></mat-datepicker-toggle>
+      <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+    </mat-form-field>
+  </form> -->
+
+  <section>
+    <div class="grid lg:grid-cols-12 gap-6 w-full">
+      <!-- Primeira linha -->
+      <div
+        class="relative text-light xl:col-span-5 lg:col-span-6 md:col-span-6 sm:col-span-12 bg-card rounded shadow-lg px-4 pt-5 pb-0"
+      ></div>
+      @if (revenue$ | async) {
+
+      <div
+        class="text-light sm:col-span-6 md:col-span-6 lg:col-span-6 xl:col-span-3 bg-card rounded shadow-lg px-4 py-5"
+      ></div>
+      <div
+        class="text-light md:col-span-6 sm:col-span-6 lg:col-span-6 xl:col-span-2 bg-card rounded shadow-lg px-4 py-5"
+      ></div>
+      <div
+        class="text-light md:col-span-6 sm:col-span-6 lg:col-span-6 xl:col-span-2 bg-card rounded shadow-lg px-4 py-5"
+      ></div>
+      }
+
+      <!-- Segunda linha -->
+      <div
+        class="xl:col-span-8 bg-card lg:col-span-12 rounded shadow-lg px-4 py-5 w-100"
+      >
+        <h3 class="text-lg">Evolução de Saídas</h3>
+      </div>
+      <div
+        class="xl:col-span-4 w-full lg:col-span-6 h-full flex flex-col gap-4"
+      >
+        <div class="h-full bg-card shadow-lg rounded px-5 py-5">
+          <h3>Média de movimentações diária</h3>
+        </div>
+        <div class="h-full bg-card shadow-lg rounded px-5 relative">
+          <h3 class="pt-5">Custos fixos e variáveis</h3>
+        </div>
+      </div>
+
+      <!-- Terceira linha -->
+      <div
+        class="xl:col-span-4 bg-card lg:col-span-6 rounded shadow-lg px-4 py-5 w-100"
+      >
+        Top maiores saídas
+      </div>
+      <div
+        class="relative xl:col-span-4 lg:col-span-6 bg-card rounded shadow-lg px-4 py-5"
+      >
+        <h3>Centro de custo</h3>
+        <small class="text-secondary">Entradas por centro de custo</small>
+        <div class="h-full w-full flex items-center justify-center"></div>
+      </div>
+      <a
+        routerLink="/top-maiores-entradas"
+        class="xl:col-span-4 lg:col-span-6 bg-card rounded shadow-lg px-4 py-5 w-100"
+      >
+        <div>Top maiores entradas</div>
+      </a>
+    </div>
+  </section>
+</div>
