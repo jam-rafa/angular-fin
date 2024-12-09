@@ -5,10 +5,12 @@ import { LoginComponent } from './authPages/login/login.component';
 import { SigninComponent } from './authPages/signin/signin.component';
 import { AuthLayoutComponent } from './shared/components/layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './shared/components/layouts/main-layout/main-layout.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   {
     path: 'app',
+    canActivateChild: [authGuard],
     component: MainLayoutComponent,
     children: [
       {
