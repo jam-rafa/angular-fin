@@ -1,15 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { InputComponent } from '../../shared/components/forms/inputs/input/input.component';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { LoginService } from '../../shared/services/auth/login.service';
-import { ILogin } from '../../shared/models/auth/login';
+import { LoginService } from '../../../shared/services/auth/login.service';
+import { Router } from '@angular/router';
+import { TokenServiceService } from '../../../shared/services/token/token-service.service';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +21,8 @@ import { ILogin } from '../../shared/models/auth/login';
 export class LoginComponent {
   private formBuilder = inject(FormBuilder);
   private loginService = inject(LoginService);
+  private route = inject(Router);
+  private tokenService = inject(TokenServiceService);
 
   form: FormGroup = this.formBuilder.group({
     email: ['', Validators.required],
@@ -28,8 +30,12 @@ export class LoginComponent {
   });
 
   submitForm() {
-    this.loginService
-      .makeLogin(this.form.value)
-      .subscribe((res) => console.log(res));
+    this.loginService.makeLogin(this.form.value).subscribe((res) => {
+      if (res.token) {
+        this.tokenService.saveToken(res.token);
+        this.route.navigate(['/app/dashboard']);
+        return;
+      }
+    });
   }
 }

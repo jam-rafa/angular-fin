@@ -8,3 +8,8 @@ export interface ILoginPayload{
     "message": string,
     "token": string
 }
+
+export interface ICheckLogin{
+    message: string ,
+    valid: boolean,
+  }

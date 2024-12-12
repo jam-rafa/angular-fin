@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { DashBoardComponent } from './pages/dash-board/dash-board.component';
-import { LoginComponent } from './authPages/login/login.component';
-import { SigninComponent } from './authPages/signin/signin.component';
+import { LoginComponent } from './pages/authPages/login/login.component';
+import { SigninComponent } from './pages/authPages/signin/signin.component';
 import { AuthLayoutComponent } from './shared/components/layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './shared/components/layouts/main-layout/main-layout.component';
 import { authGuard } from './core/guards/auth.guard';

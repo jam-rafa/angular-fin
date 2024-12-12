@@ -41,6 +41,9 @@ export class DashBoardComponent {
     this.initializeDahboard();
   }
 
+
+  
+
   initializeDahboard() {
     this.getRevenue();
   }
