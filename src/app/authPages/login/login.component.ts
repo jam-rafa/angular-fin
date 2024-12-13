@@ -13,7 +13,7 @@ import { ILogin } from '../../shared/models/auth/login';
 
 @Component({
   selector: 'app-login',
-  imports: [MatIconModule, MatInputModule, ReactiveFormsModule],
+  imports: [MatIconModule, MatInputModule, ReactiveFormsModule, InputComponent],
   standalone: true,
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',

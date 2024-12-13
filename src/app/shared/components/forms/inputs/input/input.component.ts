@@ -1,9 +1,9 @@
-import { Component, input } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { Component, inject, input } from '@angular/core';
+import { ControlValueAccessor, FormsModule, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
-  imports: [],
+  imports: [FormsModule],
   standalone: true,
   template: `
     <div class="relative">
@@ -14,7 +14,10 @@ import { ControlValueAccessor } from '@angular/forms';
       </div>
       <input
         type="search"
-        id="default-search"
+        [(ngModel)]="inputValue"
+        (focus)="onTouched && onTouched()"
+        (input)="onChange && onChange(inputValue)"
+        [disabled]="isDisabled"
         class="block w-full p-3 ps-10 text-sm border outline-none rounded-lg bg-transparent focus:border-primary focus:shadow-lg"
         [placeholder]="placeholder"
         required
@@ -24,17 +27,29 @@ import { ControlValueAccessor } from '@angular/forms';
   styleUrl: './input.component.scss',
 })
 export class InputComponent implements ControlValueAccessor {
+  inputValue = '';
+
+  private ngControl = inject(NgControl, { optional: true });
+  protected onTouched?: () => {};
+  protected onChange?: (value: any) => [];
+  protected isDisabled = false;
+
+  constructor() {
+    if (this.ngControl) this.ngControl.valueAccessor = this;
+    if (this.onTouched) this.onTouched;
+  }
+
   writeValue(obj: any): void {
-    throw new Error('Method not implemented.');
+    this.inputValue = obj;
   }
   registerOnChange(fn: any): void {
-    throw new Error('Method not implemented.');
+    this.onChange = fn;
   }
   registerOnTouched(fn: any): void {
-    throw new Error('Method not implemented.');
+    this.onTouched = fn;
   }
   setDisabledState?(isDisabled: boolean): void {
-    throw new Error('Method not implemented.');
+    this.isDisabled = isDisabled;
   }
 
   placeholder = input.required<string>();
