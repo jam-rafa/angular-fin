@@ -16,4 +16,6 @@ export class DashboardService {
       `${this.API}/dashboard/revenue?start_date=${startDate}&end_date=${endDate}`
     );
   }
+
+  
 }
