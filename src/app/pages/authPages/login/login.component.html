@@ -15,40 +15,22 @@
       class="max-w mx-auto my-5 flex flex-col gap-4"
       (ngSubmit)="submitForm()"
     >
-      <!-- <app-input></app-input> -->
-      <!-- <div class="relative">
-        <div
-          class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
-        >
-          <i class="ti ti-mail"></i>
-        </div>
-        <input
-          type="search"
-          id="default-search"
-          class="block w-full p-3 ps-10 text-sm border outline-none rounded-lg bg-transparent focus:border-primary focus:shadow-lg"
-          placeholder="Digite seu emai"
-          required
-          formControlName="email"
-        />
-      </div> -->
+      <app-input
+        formControlName="email"
+        [placeholder]="'Digite seu nome'"
+        [type]="'email'"
+        [icon]="'mail'"
+        [required]="true"
+      ></app-input>
 
-      <app-input formControlName="email"></app-input>
+      <app-input
+        formControlName="password"
+        [placeholder]="'Digite seu nome'"
+        [type]="'email'"
+        [icon]="'key'"
+        [required]="true"
 
-      <div class="relative">
-        <div
-          class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
-        >
-          <i class="ti ti-key"></i>
-        </div>
-        <input
-          type="search"
-          id="default-search"
-          class="block w-full p-3 ps-10 text-sm border outline-none rounded-lg bg-transparent focus:border-primary focus:shadow-lg"
-          placeholder="Digite sua senha"
-          required
-          formControlName="password"
-        />
-      </div>
+      ></app-input>
 
       <button
         type="submit"

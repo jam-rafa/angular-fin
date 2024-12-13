@@ -1,0 +1,12 @@
+input,
+textarea,
+select,
+mat-select {
+  box-sizing: border-box !important;
+
+  display: block;
+
+  &.ng-invalid.ng-touched {
+    @apply border-danger/50;
+  }
+}

@@ -10,6 +10,7 @@ import {
 import { LoginService } from '../../../shared/services/auth/login.service';
 import { Router } from '@angular/router';
 import { TokenServiceService } from '../../../shared/services/token/token-service.service';
+import { InputComponent } from '../../../shared/components/forms/inputs/input/input.component';
 
 @Component({
   selector: 'app-login',
@@ -30,6 +31,7 @@ export class LoginComponent {
   });
 
   submitForm() {
+    if (!this.form.valid) return;
     this.loginService.makeLogin(this.form.value).subscribe((res) => {
       if (res.token) {
         this.tokenService.saveToken(res.token);
